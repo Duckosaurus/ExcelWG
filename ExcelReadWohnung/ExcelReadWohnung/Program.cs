@@ -7,9 +7,9 @@ namespace ExcelReadWohnung
         public static void Main(string[] args)
         {
             Excel test= new Excel();
-            test.FilePath();
+            test.GetFilePath();
             //Evtl falsches Office installiert, 15.00 irgendwas
-            test.Auslesen();
+            test.AuslesenSabi();
         }
     }
 }

@@ -10,13 +10,13 @@ namespace ExcelReadWohnung
     {
         public string Monat { get; set; }
         public string Name { get; set; }
-        public decimal Miete{ get; set; }
-        public decimal? Heizkosten{ get; set; }
-        public decimal? Strom { get; set; }
-        public decimal? Internet { get; set; }
-        public decimal? Versicherung { get; set; }
-        public decimal? WGKasse { get; set; }
-        public decimal Gesamt { get; set; }
+        public string Miete { get; set; }
+        public string? Heizkosten{ get; set; }
+        public string? Strom { get; set; }
+        public string? Internet { get; set; }
+        public string? Versicherung { get; set; }
+        public string? WGKasse { get; set; }
+        public string Gesamt { get; set; }
 
     }
 }
