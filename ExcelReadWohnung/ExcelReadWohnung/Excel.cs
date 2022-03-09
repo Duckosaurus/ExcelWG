@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 using Excelu = Microsoft.Office.Interop.Excel;
@@ -59,6 +61,16 @@ namespace ExcelReadWohnung
             }
 
             return data;
+        }
+
+        public void EmailSend(string text)
+        {
+            var client = new SmtpClient("smtp.gmail.com", 587)
+            {
+                Credentials = new NetworkCredential("sebastian.schirrer2@gmail.com", "MadlsWG123"),
+                EnableSsl = true
+            };
+            client.Send("sebastian.schirrer2@gmail.com", "sebastian.schirrer@gmail.com", "test", "testbody");
         }
         public string GetFilePath()
         {
