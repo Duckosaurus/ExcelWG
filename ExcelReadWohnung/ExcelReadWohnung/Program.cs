@@ -9,7 +9,7 @@ namespace ExcelReadWohnung
             Excel test= new Excel();
             test.GetFilePath();
             //Evtl falsches Office installiert, 15.00 irgendwas
-            test.AuslesenSabi();
+            test.Auslesen("B");
             test.EmailSend("");
         }
     }

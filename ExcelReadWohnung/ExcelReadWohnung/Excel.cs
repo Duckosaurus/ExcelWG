@@ -12,7 +12,7 @@ namespace ExcelReadWohnung
 {
     class Excel
     {
-        public List<ExcelData> AuslesenSabi()
+        public List<ExcelData> Auslesen(string zeile)
         {
             List<ExcelData> data = new List<ExcelData>();
             ExcelData exData= new ExcelData();
@@ -22,34 +22,33 @@ namespace ExcelReadWohnung
                 ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
                 using (ExcelPackage excelPackage = new ExcelPackage(fi))
                 {
-                    //startet bei 1 nicht 0!
                     ExcelWorksheet worksheet = excelPackage.Workbook.Worksheets["Rechnung"];
                     string miete = "0";
-                    miete = worksheet.Cells["B3"].Value.ToString();
+                    miete = worksheet.Cells[$"{zeile}3"].Value.ToString();
                     exData.Miete = miete;
 
                     string heizkosten = "0";
-                    heizkosten = worksheet.Cells["B4"].Value.ToString();
+                    heizkosten = worksheet.Cells[$"{zeile}4"].Value.ToString();
                     exData.Heizkosten = heizkosten;
 
                     string stromkosten= "0";
-                    stromkosten = worksheet.Cells["B5"].Value.ToString();
+                    stromkosten = worksheet.Cells[$"{zeile}5"].Value.ToString();
                     exData.Strom = stromkosten;
 
                     string internet = "0";
-                    internet = worksheet.Cells["B6"].Value.ToString();
+                    internet = worksheet.Cells[$"{zeile}6"].Value.ToString();
                     exData.Internet = internet;
 
                     string versicherung = "0";
-                    versicherung = worksheet.Cells["B7"].Value.ToString();
+                    versicherung = worksheet.Cells[$"{zeile}7"].Value.ToString();
                     exData.Versicherung = versicherung;
 
                     string wgKassa = "0";
-                    wgKassa = worksheet.Cells["B8"].Value.ToString();
+                    wgKassa = worksheet.Cells[$"{zeile}8"].Value.ToString();
                     exData.WGKasse = wgKassa;
 
                     string ges = "0";
-                    ges = worksheet.Cells["B9"].Value.ToString();
+                    ges = worksheet.Cells[$"{zeile}9"].Value.ToString();
                     exData.Gesamt=ges;
 
                     data.Add(exData);
@@ -67,10 +66,10 @@ namespace ExcelReadWohnung
         {
             var client = new SmtpClient("smtp.gmail.com", 587)
             {
-                Credentials = new NetworkCredential("sebastian.schirrer2@gmail.com", "MadlsWG123"),
+                Credentials = new NetworkCredential("sebastian.schirrer2@gmail.com", ""),
                 EnableSsl = true
             };
-            client.Send("sebastian.schirrer2@gmail.com", "sebastian.schirrer@gmail.com", "test", "testbody");
+            client.Send("sebastian.schirrer2@gmail.com", "sebastian.schirrer@hotmail.com", "test", "testbody");
         }
         public string GetFilePath()
         {
