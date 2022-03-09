@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OfficeOpenXml;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,10 +15,17 @@ namespace ExcelReadWohnung
             List<ExcelData> data = new List<ExcelData>();
             try
             {
-                Excelu.Application oExcel = new Excelu.Application();
-                string path = FilePath();
-                Excelu.Workbook wB = oExcel.Workbooks.Open(path);
-                var excelSheet = wB.Name;
+                FileInfo fi = new FileInfo(GetFilePath());
+
+                using (ExcelPackage excelPackage = new ExcelPackage(fi))
+                {
+                    //startet bei 1 nicht 0!
+                    ExcelWorksheet firstWorksheet = excelPackage.Workbook.Worksheets[1]; 
+
+
+
+                }
+
 
             }
             catch (Exception ex)
@@ -27,7 +35,7 @@ namespace ExcelReadWohnung
 
             return data;
         }
-        public string FilePath()
+        public string GetFilePath()
         {
             string path = @"C:\Users\Sebi\source\repos\ExcelReadWohnung\ExcelReadWohnung\Sheet\Rechnungen.xlsx";
 
